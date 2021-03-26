@@ -40,15 +40,20 @@ func (u *User) Login(username, password string) error {
 	return nil
 }
 
+// proxy should keep raw GetName
+func (u *User) GetName() string {
+	return "ca"
+}
+
 // UserProxy 代理类
 type UserProxy struct {
-	user *User
+	*User
 }
 
 // NewUserProxy NewUserProxy
 func NewUserProxy(user *User) *UserProxy {
 	return &UserProxy{
-		user: user,
+		User: user,
 	}
 }
 
@@ -58,7 +63,7 @@ func (p *UserProxy) Login(username, password string) error {
 	start := time.Now()
 
 	// 这里是原有的业务逻辑
-	if err := p.user.Login(username, password); err != nil {
+	if err := p.User.Login(username, password); err != nil {
 		return err
 	}
 
