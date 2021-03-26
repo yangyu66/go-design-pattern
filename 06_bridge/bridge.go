@@ -1,3 +1,12 @@
+/*
+a client-provider middleman to soften interface changes
+https://github.com/yangyu66/python-patterns/blob/master/patterns/structural/bridge.py#L32
+
+	sender := NewEmailMsgSender([]string{"test@test.com"})
+	n := NewErrorNotification(sender)
+	err := n.Notify("test msg")
+*/
+
 package bridge
 
 // IMsgSender IMsgSender
